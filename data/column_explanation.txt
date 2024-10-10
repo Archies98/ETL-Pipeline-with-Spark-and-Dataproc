@@ -1,0 +1,17 @@
+
+    Transaction_ID: Unique identifier for each trade transaction.
+    Country: Country of origin or destination for the trade.
+    Product: Product being traded.
+    Import_Export: Indicates whether the transaction is an import or export.
+    Quantity: Amount of the product traded.
+    Value: Monetary value of the product in USD.
+    Date: Date of the transaction.
+    Category: Category of the product (e.g., Electronics, Clothing, Machinery).
+    Port: Port of entry or departure.
+    Customs_Code: Customs or HS code for product classification.
+    Weight: Weight of the product in kilograms.
+    Shipping_Method: Method used for shipping (e.g., Air, Sea, Land).
+    Supplier: Name of the supplier or manufacturer.
+    Customer: Name of the customer or recipient.
+    Invoice_Number: Unique invoice number for the transaction.
+    Payment_Terms: Terms of payment (e.g., Net 30, Net 60, Cash on Delivery).
