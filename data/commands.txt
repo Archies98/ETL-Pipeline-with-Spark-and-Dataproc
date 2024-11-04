@@ -1,0 +1,32 @@
+!--- Gcloud command to create Dataproc cluster ---!
+
+gcloud dataproc clusters create cluster-90a1 \
+    --enable-component-gateway \
+    --region us-central1 \
+    --no-address \
+    --master-machine-type n2-standard-4 \
+    --master-boot-disk-type pd-balanced \
+    --master-boot-disk-size 500 \
+    --num-workers 2 \
+    --worker-machine-type n2-standard-4 \
+    --worker-boot-disk-type pd-balanced \
+    --worker-boot-disk-size 500 \
+    --image-version 2.2-debian12 \
+    --optional-components JUPYTER \
+    --project vernal-aleph-399501
+
+This creates a standard master-worker type configuration for the dataproc cluster.
+Specifically, it will create a cluster with 1 master node and 2 worker nodes with 500GB disk space for each.
+Every machine is of type n2-standard-2 and has 2 vCPUs, 8 GB of memory and egress bandwidth of 10Gbps.
+The region of deployment is us-central1.
+Each node runs on debian and has Jupyter notebooks enabled - which needs to be done if you want to open a Jupyter notebook on the dataproc cluster.
+
+!--- Gcloud command to submit spark job to created cluster ---!
+
+gcloud dataproc jobs submit pyspark pipeline.py \
+    --cluster=cluster-90a1 \
+    --region=us-central1 \
+    --gs://mybucket/input/ gs://mybucket/output/
+
+This submits a job which is run on the created dataproc cluster. Note the input and output locations provided to the job.
+The dataproc job will read input data directly from and write output data to Google Cloud Storage bucket.
